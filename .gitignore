@@ -1,0 +1,7 @@
+__*
+.vscode/
+.idea/
+.fleet/
+
+data.json
+*.csv

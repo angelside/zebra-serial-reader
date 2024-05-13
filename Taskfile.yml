@@ -1,0 +1,25 @@
+version: "3"
+
+silent: true
+
+vars:
+  BINARY_NAME: zebra-serial-reader
+  ENTRY_FILE: ./cmd/.
+  BUILD_DIR: __dist
+  BUILD_FILE: "./{{.BUILD_DIR}}/{{.BINARY_NAME}}.exe"
+  RELEASE_FILE: "./{{.BUILD_DIR}}/{{.BINARY_NAME}}__upx.exe"
+
+tasks:
+  run:
+    cmds:
+      - go run ./cmd/.
+  build:
+    desc: Build a binary.
+    cmds:
+      - go build -v {{.LDFLAGS}} -o {{.BUILD_FILE}} {{.ENTRY_FILE}}
+  release:
+    desc: Build the a release binary.
+    cmds:
+      - go build -v {{.LDFLAGS}} -o {{.RELEASE_FILE}} {{.ENTRY_FILE}}
+      - upx --best {{.RELEASE_FILE}}
+    #ignore_error: true
