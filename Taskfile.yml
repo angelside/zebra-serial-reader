@@ -1,5 +1,4 @@
 version: "3"
-
 silent: true
 
 vars:
@@ -11,14 +10,13 @@ vars:
 
 tasks:
   run:
-    cmds:
-      - go run ./cmd/.
+    desc: Run without build.
+    cmd: go run {{.ENTRY_FILE}}
   build:
-    desc: Build a binary.
-    cmds:
-      - go build -v {{.LDFLAGS}} -o {{.BUILD_FILE}} {{.ENTRY_FILE}}
+    desc: Build the binary file.
+    cmd: go build -v {{.LDFLAGS}} -o {{.BUILD_FILE}} {{.ENTRY_FILE}}
   release:
-    desc: Build the a release binary.
+    desc: Build the a release binary file.
     cmds:
       - go build -v {{.LDFLAGS}} -o {{.RELEASE_FILE}} {{.ENTRY_FILE}}
       - upx --best {{.RELEASE_FILE}}
