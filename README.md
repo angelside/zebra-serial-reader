@@ -7,39 +7,59 @@
 
 > The zebra-serial-reader finds serial numbers and product names of Zebra printers on the network via IP addresses.
 
+### Tested on
+
+- [x] Windows
+- [ ] Linux
+- [ ] MacOS
+
+### TODO
+
+- [ ] Test if we can awake printer from sleep.
+
+
 ## 📦 Installation
 
--TODO-
+No installations, it's a single portable binary file. You can put in your binary path and use it from anywhere.
 
 ## 🔨 Usage
 
--TODO-
-
-Create a data.json like below:
+1. Download or build the binary file.
+2. Create a `data.json` file next to the binary file following the template below. The first variable can be anything that identifies the printer. Second variable is printer's IP address.
 
 ```json
 {
-  "NAME/LOCATION": "127.0.0.1"
+  "OFFICE_1": "127.0.0.1",
+  "OFFICE_2": "127.0.0.2"
 }
 ```
 
-## Run
+3. Run the binary without any parameters. It will read the data.json file, print the result to the console, write the results to the `__printers.csv` file, and then exit.
 
 ```bash
-task run
+.\zebra-serial-reader.exe
 ```
 
-## Build
+## 🚀 Build from source
+
+With task [Task](https://taskfile.dev/)
 
 ```bash
 task build
 ```
 
-### 📋 Sample results
+With `go build`
+
+```bash
+go build -v -ldflags="-s -w" -o ./__dist/zebra-serial-reader.exe ./cmd/.
+```
+
+## 📋 Sample results
 ```bash
 == Zebra serial number extractor
 
 [OK] Location: OFFICE_1, Serial number: D3Jxxxxxx, Product: ZD620, IP: 127.0.0.1
+[OK] Location: OFFICE_2, Serial number: D3Jxxxxxx, Product: ZD620, IP: 127.0.0.2
 
 CSV file created successfully: __printers.csv
 ```
