@@ -30,7 +30,8 @@ No installations, it's a single portable binary file. You can put in your binary
 ```json
 {
   "OFFICE_1": "127.0.0.1",
-  "OFFICE_2": "127.0.0.2"
+  "OFFICE_2": "127.0.0.2",
+  "OFFICE_3": "127.0.0.3"
 }
 ```
 
@@ -60,6 +61,7 @@ go build -v -ldflags="-s -w" -o ./__dist/zebra-serial-reader.exe ./cmd/.
 
 [OK] Location: OFFICE_1, Serial number: D3Jxxxxxx, Product: ZD620, IP: 127.0.0.1
 [OK] Location: OFFICE_2, Serial number: D3Jxxxxxx, Product: ZD620, IP: 127.0.0.2
+[ERROR] Location: OFFICE_3, IP: 127.0.0.4
 
 CSV file created successfully: __printers.csv
 ```
