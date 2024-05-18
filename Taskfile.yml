@@ -24,3 +24,11 @@ tasks:
       - go build -v {{.LDFLAGS}} -o {{.RELEASE_FILE}} {{.ENTRY_FILE}}
       - upx --best {{.RELEASE_FILE}}
     #ignore_error: true
+
+  validate:
+    # https://github.com/Boeing/config-file-validator
+    desc: Validate config files.
+    cmds:
+      - echo '== Config file validator'
+      - echo
+      - validator --groupby pass-fail --exclude-dirs build,dist,node_modules,.svelte-kit
